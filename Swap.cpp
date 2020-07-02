@@ -5,4 +5,7 @@
  */
 void swap(int & a, int & b) {
     /* YOUR CODE HERE */
+    int num = b;
+    b = a;
+    a = num;
 }

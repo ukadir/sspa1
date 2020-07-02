@@ -4,7 +4,9 @@
  * Implement Queue constructor
  */
 Queue::Queue() {
-
+    head = NULL;
+    tail = NULL;
+    numElements = 0;
 }
 
 /**
@@ -12,6 +14,7 @@ Queue::Queue() {
  */
 Queue::~Queue() {
     /* YOUR CODE HERE */
+    clear();
 }
 
 /**
@@ -19,6 +22,7 @@ Queue::~Queue() {
  */
 unsigned int Queue::size() {
     /* YOUR CODE HERE */
+    return numElements;
 }
 
 /**
@@ -26,6 +30,16 @@ unsigned int Queue::size() {
  */
 void Queue::clear() {
     /* YOUR CODE HERE */
+    if (head == NULL)
+        return;
+
+    Node* curr = head;
+    while(curr) {
+        Node* temp = curr;
+        curr = curr->next;
+        delete temp;
+    }
+    numElements=0;
 }
 
 /**
@@ -33,6 +47,17 @@ void Queue::clear() {
  */
 void Queue::push(string s) {
     /* YOUR CODE HERE */
+    Node* newNode = new Node(s);
+    if(head == NULL) {
+        head = newNode;
+        tail = newNode;
+        numElements++;
+        return;
+    }
+    
+    tail->next = newNode;
+    tail = newNode;
+    numElements++;
 }
 
 /**
@@ -40,4 +65,11 @@ void Queue::push(string s) {
  */
 string Queue::pop() {
     /* YOUR CODE HERE */
+    if(head == NULL) {
+        return "";
+    }
+    Node* front = head;
+    head = head->next;
+    numElements--;
+    return front->data;
 }

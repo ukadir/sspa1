@@ -21,6 +21,7 @@ FastSaga::FastSaga() {
  */
 vector<string>::iterator FastSaga::begin() {
     /* YOUR CODE HERE */
+    return titles.begin();
 }
 
 /**
@@ -28,4 +29,5 @@ vector<string>::iterator FastSaga::begin() {
  */
 vector<string>::iterator FastSaga::end() {
     /* YOUR CODE HERE */
+    return titles.end();
 }
